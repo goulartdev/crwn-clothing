@@ -4,7 +4,7 @@ import CustomButton from '../custom-buttom/custom-buttom';
 
 import FormInput from '../form-input/form-input';
 
-import './signin.scss';
+import './sign-in.scss';
 
 interface LoginInfo {
   email: string;
