@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
 
-import { ReactComponent as Logo } from '../../assets/crown.svg';
+import { RootState } from '../../redux/root-reducer';
 import { auth } from '../../firebase/firebase.utils';
 import { User } from '../../model';
 
+import { ReactComponent as Logo } from '../../assets/crown.svg';
 import './header.scss'
 
 interface HeaderProps {
-  currentUser: User | undefined;
+  currentUser: User | null;
 }
 
 const Header = ({ currentUser }: HeaderProps) => {
@@ -40,4 +42,8 @@ const Header = ({ currentUser }: HeaderProps) => {
   )
 }
 
-export default Header;
+const mapStateToProps = (state: RootState) => ({
+  currentUser: state.auth.currentUser
+})
+
+export default connect(mapStateToProps)(Header);

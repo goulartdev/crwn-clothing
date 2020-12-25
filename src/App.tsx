@@ -1,17 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 import { User } from './model';
+import { AuthActionTypes } from './redux/auth/auth.types';
+import { setCurrentUser } from './redux/auth/auth.actions';
 
 import { Authentication, HomePage, ShopPage } from './pages';
 import Header from './components/header/header';
 
 import './App.css';
 
-function App() {
-  const [currentUser, setCurrentUser] = useState<User | undefined>();
+interface AppProps {
+  setCurrentUser(user: User | null): AuthActionTypes
+}
+
+function App({ setCurrentUser }: AppProps) {
+  // const [currentUser, setCurrentUser] = useState<User | undefined>();
 
   useEffect(() => {
     return auth.onAuthStateChanged(async userAuth => {
@@ -27,19 +35,19 @@ function App() {
               name: data.name,
               email: data.email,
               createdAt: data.createdAt
-            } : undefined
+            } : null
           );
         });
 
       } else {
-        setCurrentUser(undefined);
+        setCurrentUser(null);
       }
     });
   });
 
   return (
     <div>
-      <Header currentUser={currentUser}/>
+      <Header/>
       <Switch>
         <Route path='/' component={HomePage} exact/>
         <Route path='/shop' component={ShopPage} />
@@ -49,4 +57,8 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  setCurrentUser: (user: User) => dispatch(setCurrentUser(user))
+});
+
+export default connect(null, mapDispatchToProps)(App);
