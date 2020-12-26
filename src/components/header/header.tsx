@@ -1,18 +1,21 @@
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { RootState } from '../../redux/root-reducer';
 import { auth } from '../../firebase/firebase.utils';
-import { User } from '../../model';
+
+import CartIcon from '../cart-icon/cart-icon';
 
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import './header.scss'
+import CartDropdown from '../cart-dropdown/cart-dropdown';
 
-interface HeaderProps {
-  currentUser: User | null;
-}
+const Header = () => {
+  const {
+    auth: { currentUser }, 
+    cart: { hidden: hideCartDropdown } 
+   } = useSelector((state: RootState) => state);
 
-const Header = ({ currentUser }: HeaderProps) => {
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -36,14 +39,11 @@ const Header = ({ currentUser }: HeaderProps) => {
             </Link>
           )
         }
-
+        <CartIcon />
       </div>
+      { hideCartDropdown || <CartDropdown /> }
     </div>
   )
 }
 
-const mapStateToProps = (state: RootState) => ({
-  currentUser: state.auth.currentUser
-})
-
-export default connect(mapStateToProps)(Header);
+export default Header;

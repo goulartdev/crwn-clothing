@@ -2,7 +2,7 @@ import { AuthState, AuthActionTypes, AuthAction } from "./auth.types";
 
 const initialState: AuthState = {
   currentUser: null
-}
+};
 
 const authReducer = (state = initialState, action: AuthAction): AuthState => {
   switch (action.type) {
@@ -10,10 +10,10 @@ const authReducer = (state = initialState, action: AuthAction): AuthState => {
       return { 
         ...state, 
         currentUser: action.payload
-      }
+      };
     default:
       return state;
   }
-}
+};
 
 export default authReducer;
