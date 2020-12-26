@@ -4,11 +4,13 @@ export interface AuthState {
   currentUser: User | null;
 }
 
-export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const AuthActionTypes = {
+  SET_CURRENT_USER: 'SET_CURRENT_USER'
+};
 
 interface SetCurrentUserAction {
-  type: typeof SET_CURRENT_USER;
+  type: typeof AuthActionTypes.SET_CURRENT_USER;
   payload: User | null
 }
 
-export type AuthActionTypes = SetCurrentUserAction;
+export type AuthAction = SetCurrentUserAction;

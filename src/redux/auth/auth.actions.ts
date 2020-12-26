@@ -1,8 +1,8 @@
 import { User } from "../../model";
 
-import { AuthActionTypes, SET_CURRENT_USER } from "./auth.types";
+import { AuthActionTypes, AuthAction } from "./auth.types";
 
-export const setCurrentUser = (user: User | null): AuthActionTypes => ({
-  type: SET_CURRENT_USER,
+export const setCurrentUser = (user: User | null): AuthAction => ({
+  type: AuthActionTypes.SET_CURRENT_USER,
   payload: user
 })
