@@ -13,7 +13,7 @@ import CartDropdown from '../cart-dropdown/cart-dropdown';
 const Header = () => {
   const {
     auth: { currentUser }, 
-    cart: { hidden: hideCartDropdown } 
+    cart: { dropdownHidden } 
    } = useSelector((state: RootState) => state);
 
   return (
@@ -41,7 +41,7 @@ const Header = () => {
         }
         <CartIcon />
       </div>
-      { hideCartDropdown || <CartDropdown /> }
+      { dropdownHidden || <CartDropdown /> }
     </div>
   )
 }

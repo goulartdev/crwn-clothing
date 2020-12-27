@@ -1,13 +1,24 @@
+import { ShopDataItem } from "../../model";
+import { CartItem } from "../../model/cart-item";
+
 export interface CartState {
-  hidden: boolean;
+  dropdownHidden: boolean;
+  cartItems: CartItem[];
 };
 
 export const CartActionTypes = {
-  TOOGLE_CART_DROPDOWN_VISIBILITY: 'TOOGLE_CART_DROPDOWN_VISIBILITY'
+  TOOGLE_DROPDOWN_VISIBILITY: 'TOOGLE_DROPDOWN_VISIBILITY',
+  ADD_ITEM: 'ADD_ITEM'
 };
 
-interface ToggleCartDropdownVisibilityAction {
-  type: typeof CartActionTypes.TOOGLE_CART_DROPDOWN_VISIBILITY;
+interface ToggleDropdownVisibilityAction {
+  type: typeof CartActionTypes.TOOGLE_DROPDOWN_VISIBILITY;
+  payload?: any;
 };
 
-export type CartAction = ToggleCartDropdownVisibilityAction;
+interface AddItem {
+  type: typeof CartActionTypes.ADD_ITEM;
+  payload: ShopDataItem;
+}
+
+export type CartAction = ToggleDropdownVisibilityAction | AddItem;

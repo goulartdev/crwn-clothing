@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes } from 'react';
 import './custom-buttom.scss';
 
 interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  btnStyle?: 'black' | 'blue';
+  btnStyle?: 'black' | 'blue' | 'white';
 }
 
 const CustomButton = ({ btnStyle='black', children, ...props }: CustomButtonProps) => {
