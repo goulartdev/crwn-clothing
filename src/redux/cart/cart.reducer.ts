@@ -4,7 +4,7 @@ import { CartAction, CartActionTypes, CartState } from "./cart.types";
 
 const initialState: CartState = {
   dropdownHidden: true,
-  cartItems: []
+  items: []
 };
 
 const cartReducer = (state = initialState, action: CartAction) => {
@@ -17,28 +17,27 @@ const cartReducer = (state = initialState, action: CartAction) => {
     case CartActionTypes.ADD_ITEM:
       return {
         ...state, 
-        cartItems: addItemToCart(state.cartItems, action.payload)
+        items: addItemToCart(state.items, action.payload)
       };
     default:
       return state;
   }
 };
 
-const addItemToCart = (cartItems: CartItem[], itemToAdd: ShopDataItem) => {
-  let newCartItems = [...cartItems]
-  const existingCartItem = newCartItems.find(item => item.product.id === itemToAdd.id);
+const addItemToCart = (items: CartItem[], itemToAdd: ShopDataItem) => {
+  let newItems = [...items]
+  const existingItem = newItems.find(item => item.product.id === itemToAdd.id);
   
-  if (existingCartItem) {
-    existingCartItem.quantity++;
+  if (existingItem) {
+    existingItem.quantity++;
   } else {
-    newCartItems.push({
+    newItems.push({
       product: itemToAdd,
-      price: itemToAdd.price,
       quantity: 1
     })
   }
 
-  return newCartItems
+  return newItems
 }
 
 export default cartReducer;

@@ -3,7 +3,7 @@ import { CartItem } from "../../model/cart-item";
 
 export interface CartState {
   dropdownHidden: boolean;
-  cartItems: CartItem[];
+  items: CartItem[];
 };
 
 export const CartActionTypes = {

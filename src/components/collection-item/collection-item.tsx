@@ -22,7 +22,7 @@ const CollectionItem = ({ item }: CollectionItemProps) => {
         
       <div className="collection-footer">
         <span className="name">{item.name}</span>
-        <span className="price">U$ {item.price.toFixed(2)}</span>
+        <span className="price">$ {item.price.toFixed(2)}</span>
       </div>
       <CustomButton 
         btnStyle="white"
