@@ -1,4 +1,7 @@
+import { useDispatch } from 'react-redux';
+
 import { CartItem } from '../../model';
+import { addItemToCart, clearItemFromCart, removeItemFromCart } from '../../redux/cart/cart.actions';
 
 import Money from '../money/money';
 
@@ -9,6 +12,7 @@ interface CheckoutItemProps {
 }
 
 const CheckoutItem = ({ item }: CheckoutItemProps) => {
+  const dispatch = useDispatch();
   const {product: {name, price, imageUrl}, quantity} = item;
 
   return (
@@ -17,9 +21,25 @@ const CheckoutItem = ({ item }: CheckoutItemProps) => {
         <img src={imageUrl} alt="item"/>
       </div>
       <div className="name">{name}</div>
-      <div className="quantity">{quantity}</div>
+      <div className="quantity">
+        <span 
+          className="arrow" 
+          onClick={() => dispatch(removeItemFromCart(item.product))}
+        >
+          &#10094;
+        </span>
+        <span className="value">{quantity}</span>
+        <span 
+          className="arrow" 
+          onClick={() => dispatch(addItemToCart(item.product))}
+        >
+          &#10095;
+        </span>
+      </div>
       <div className="price"><Money value={price} /></div>
-      <div className="remove">&#10005;</div>
+      <div className="remove">
+        <span onClick={() => dispatch(clearItemFromCart(item.product))}>&#10005;</span>
+      </div>
     </div>
   )
 }

@@ -19,25 +19,51 @@ const cartReducer = (state = initialState, action: CartAction) => {
         ...state, 
         items: addItemToCart(state.items, action.payload)
       };
+    case CartActionTypes.REMOVE_ITEM:
+      return {
+        ...state, 
+        items: removeItemFromCart(state.items, action.payload)
+      };
+    case CartActionTypes.CLEAR_ITEM:
+      return {
+        ...state,
+        items: clearItemFromCart(state.items, action.payload)
+      }
     default:
       return state;
   }
 };
 
 const addItemToCart = (items: CartItem[], itemToAdd: ShopDataItem) => {
-  let newItems = [...items]
-  const existingItem = newItems.find(item => item.product.id === itemToAdd.id);
+  let newCartItems = [...items];
+  const existingCartItem = newCartItems.find(cartItem => cartItem.product.id === itemToAdd.id);
   
-  if (existingItem) {
-    existingItem.quantity++;
+  if (existingCartItem) {
+    existingCartItem.quantity++;
   } else {
-    newItems.push({
+    newCartItems.push({
       product: itemToAdd,
       quantity: 1
-    })
+    });
   }
 
-  return newItems
+  return newCartItems;
+}
+
+const removeItemFromCart = (items: CartItem[], itemToAdd: ShopDataItem) => {
+  const existingCartItem = items.find(cartItem => cartItem.product.id === itemToAdd.id);
+  
+  if (existingCartItem) {
+    existingCartItem.quantity--;
+  }
+
+  const newItems = items.filter((cartItem: CartItem) => cartItem.quantity > 0);
+
+  return newItems;
+}
+
+const clearItemFromCart = (items: CartItem[], itemToRemove: ShopDataItem) => {
+  return items.filter((cartItem: CartItem) => cartItem.product.id !== itemToRemove.id);
 }
 
 export default cartReducer;

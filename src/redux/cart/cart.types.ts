@@ -8,7 +8,9 @@ export interface CartState {
 
 export const CartActionTypes = {
   TOGGLE_DROPDOWN_VISIBILITY: 'TOGGLE_DROPDOWN_VISIBILITY',
-  ADD_ITEM: 'ADD_ITEM'
+  ADD_ITEM: 'ADD_ITEM',
+  REMOVE_ITEM: 'REMOVE_ITEM',
+  CLEAR_ITEM: 'CLEAR_ITEM',
 };
 
 interface ToggleDropdownVisibilityAction {
@@ -21,4 +23,14 @@ interface AddItem {
   payload: ShopDataItem;
 }
 
-export type CartAction = ToggleDropdownVisibilityAction | AddItem;
+interface RemoveItem {
+  type: typeof CartActionTypes.REMOVE_ITEM;
+  payload: ShopDataItem
+}
+
+interface ClearItem {
+  type: typeof CartActionTypes.CLEAR_ITEM;
+  payload: ShopDataItem
+}
+
+export type CartAction = ToggleDropdownVisibilityAction | AddItem | RemoveItem | ClearItem;

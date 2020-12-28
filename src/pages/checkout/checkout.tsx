@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { CartItem } from '../../model';
 import { selectCartItems, selectCartTotalPrice } from '../../redux/cart/cart.selectors';

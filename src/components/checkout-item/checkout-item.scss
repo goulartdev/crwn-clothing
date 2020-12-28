@@ -18,10 +18,19 @@
   }
 
   .quantity {
-    padding-left: 30px;
+    display: flex;
+    
+    .arrow {
+      cursor: pointer;
+      margin: 0 10px;
+    }
   }
 
   .remove {
     text-align: center;
+
+    span {
+      cursor: pointer;
+    }
   }
 }
