@@ -1,7 +1,7 @@
-import { User } from "../../model";
+import { AuthUser } from "../../model";
 
 export interface AuthState {
-  currentUser: User | null;
+  currentUser: AuthUser;
 };
 
 export const AuthActionTypes = {
@@ -10,7 +10,7 @@ export const AuthActionTypes = {
 
 interface SetCurrentUserAction {
   type: typeof AuthActionTypes.SET_CURRENT_USER;
-  payload: User | null
+  payload: AuthUser
 };
 
 export type AuthAction = SetCurrentUserAction;

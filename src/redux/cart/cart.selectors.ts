@@ -3,7 +3,13 @@ import { CartItem } from "../../model";
 import { RootState } from "../root-reducer";
 import { CartState } from "./cart.types";
 
+
 export const selectCart = (state: RootState): CartState => state.cart;
+
+export const selectCartDropdownHidden = createSelector(
+  [selectCart],
+  ((cart: CartState): boolean => cart.dropdownHidden)
+);
 
 export const selectCartItems = createSelector(
   [selectCart],
@@ -13,4 +19,11 @@ export const selectCartItems = createSelector(
 export const selectCartItemsCount = createSelector(
   [selectCartItems],
   (items: CartItem[]): number => items.reduce((total, item: CartItem) => total + item.quantity, 0)
+);
+
+export const selectCartTotalPrice = createSelector(
+  [selectCartItems],
+  (items: CartItem[]): number => items.reduce(
+    (total, item: CartItem) => total + (item.quantity * item.product.price)
+  , 0)
 );

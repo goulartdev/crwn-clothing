@@ -3,16 +3,17 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+
+import { selectCurrentUser } from './redux/auth/auth.selectors';
 import { setCurrentUser } from './redux/auth/auth.actions';
 
-import { Authentication, HomePage, ShopPage } from './pages';
+import { Authentication, HomePage, ShopPage, Checkout } from './pages';
 import Header from './components/header/header';
 
 import './App.css';
-import { RootState } from './redux/root-reducer';
 
 function App() {
-  const currentUser = useSelector((state: RootState) => state.auth.currentUser);
+  const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,8 +47,9 @@ function App() {
     <div className="app-container">
       <Header/>
       <Switch>
-        <Route path='/' component={HomePage} exact/>
+        <Route exact path='/' component={HomePage} />
         <Route path='/shop' component={ShopPage} />
+        <Route exact path='/checkout' component={Checkout} />
         <Route 
           path='/signin' 
           render={() => 

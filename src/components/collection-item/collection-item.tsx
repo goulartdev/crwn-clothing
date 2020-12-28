@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { ShopDataItem } from '../../model';
 import { addItemToCart } from '../../redux/cart/cart.actions';
 import CustomButton from '../custom-buttom/custom-buttom';
+import Money from '../money/money';
 import './collection-item.scss';
 
 interface CollectionItemProps {
@@ -22,7 +23,9 @@ const CollectionItem = ({ item }: CollectionItemProps) => {
         
       <div className="collection-footer">
         <span className="name">{item.name}</span>
-        <span className="price">$ {item.price.toFixed(2)}</span>
+        <span className="price">
+          <Money value={item.price}/>
+        </span>
       </div>
       <CustomButton 
         btnStyle="white"

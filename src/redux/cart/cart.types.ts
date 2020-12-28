@@ -7,12 +7,12 @@ export interface CartState {
 };
 
 export const CartActionTypes = {
-  TOOGLE_DROPDOWN_VISIBILITY: 'TOOGLE_DROPDOWN_VISIBILITY',
+  TOGGLE_DROPDOWN_VISIBILITY: 'TOGGLE_DROPDOWN_VISIBILITY',
   ADD_ITEM: 'ADD_ITEM'
 };
 
 interface ToggleDropdownVisibilityAction {
-  type: typeof CartActionTypes.TOOGLE_DROPDOWN_VISIBILITY;
+  type: typeof CartActionTypes.TOGGLE_DROPDOWN_VISIBILITY;
   payload?: any;
 };
 

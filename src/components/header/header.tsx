@@ -1,20 +1,20 @@
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 
-import { RootState } from '../../redux/root-reducer';
 import { auth } from '../../firebase/firebase.utils';
+import { selectCurrentUser } from '../../redux/auth/auth.selectors';
+import { selectCartDropdownHidden } from '../../redux/cart/cart.selectors';
 
 import CartIcon from '../cart-icon/cart-icon';
-
-import { ReactComponent as Logo } from '../../assets/crown.svg';
-import './header.scss'
 import CartDropdown from '../cart-dropdown/cart-dropdown';
 
+import { ReactComponent as Logo } from '../../assets/crown.svg';
+
+import './header.scss'
+
 const Header = () => {
-  const {
-    auth: { currentUser }, 
-    cart: { dropdownHidden } 
-   } = useSelector((state: RootState) => state);
+  const currentUser = useSelector(selectCurrentUser)
+  const dropdownHidden = useSelector(selectCartDropdownHidden);
 
   return (
     <div className="header">

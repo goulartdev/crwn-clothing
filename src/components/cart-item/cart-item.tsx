@@ -1,4 +1,6 @@
 import { CartItem as Item } from '../../model';
+import Money from '../money/money';
+
 import './cart-item.scss';
 
 interface CartItemPros {
@@ -13,7 +15,7 @@ const CartItem = ({ item }: CartItemPros) => {
       <img src={imageUrl} alt={name}/>
       <div className="item-details">
         <span className="name">{name}</span>
-        <span className="pric">{quantity} x $ {price.toFixed(2)}</span>
+        <span className="pric">{quantity} x <Money value={price}/></span>
       </div>
     </div>
   );
