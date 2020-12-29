@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux';
 
-import { selectDirectory } from '../../redux/directory/directory.selectors';
+import { selectDirectorySections } from '../../redux/directory/directory.selectors';
 
 import MenuItem from '../menu-item/menu-item';
 
 import './directory.scss';
 
 const Directory = () => {
-  const sections = useSelector(selectDirectory);
+  const sections = useSelector(selectDirectorySections);
 
   return (
     <div className="directory-menu">

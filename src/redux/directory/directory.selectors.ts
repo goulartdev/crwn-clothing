@@ -1,4 +1,13 @@
+import { createSelector } from "reselect";
+
+import { Section } from "../../model";
+
 import { RootState } from "../root-reducer";
 import { DirectoryState } from "./directory.types";
 
-export const selectDirectory = (state: RootState): DirectoryState => state.directory;
+const selectDirectory = (state: RootState): DirectoryState => state.directory;
+
+export const selectDirectorySections = createSelector(
+  [selectDirectory],
+  (directory: DirectoryState): Section[] => directory.sections
+) 

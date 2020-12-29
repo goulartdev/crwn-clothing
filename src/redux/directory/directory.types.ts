@@ -1,3 +1,5 @@
 import { Section } from "../../model";
 
-export type DirectoryState = Section[];
+export interface DirectoryState {
+  sections: Section[];
+}
