@@ -8,8 +8,6 @@ import store from './redux/store';
 // import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 // import reportWebVitals from './reportWebVitals';
 
-import './index.css';
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

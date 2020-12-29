@@ -21,13 +21,13 @@ const Checkout = () => {
         <div className="header-block">
           <span>Description</span>
         </div>
-        <div className="header-block">
+        <div className="header-block center">
           <span>Quantity</span>
         </div>
-        <div className="header-block">
+        <div className="header-block center">
           <span>Price</span>
         </div>
-        <div className="header-block">
+        <div className="header-block center">
           <span>Remove</span>
         </div>
       </div>
