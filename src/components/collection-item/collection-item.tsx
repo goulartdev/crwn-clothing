@@ -1,40 +1,44 @@
-import { useDispatch } from 'react-redux';
-import { ShopDataItem } from '../../model';
-import { addItemToCart } from '../../redux/cart/cart.actions';
-import CustomButton from '../custom-buttom/custom-buttom';
-import Money from '../money/money';
-import './collection-item.scss';
+import { useDispatch } from "react-redux";
+
+import { Product } from "../../model";
+
+import { addItemToCart } from "../../redux/cart/cart.actions";
+
+import CustomButton from "../custom-buttom/custom-buttom";
+import Money from "../money/money";
+
+import "./collection-item.scss";
 
 interface CollectionItemProps {
-  item: ShopDataItem
+  product: Product;
 }
 
-const CollectionItem = ({ item }: CollectionItemProps) => {
+const CollectionItem = ({ product }: CollectionItemProps): JSX.Element => {
   const dispatch = useDispatch();
 
   return (
     <div className="collection-item">
-      <div 
+      <div
         className="image"
         style={{
-          backgroundImage: `url(${item.imageUrl})`
+          backgroundImage: `url(${product.imageUrl})`,
         }}
       />
-        
+
       <div className="collection-footer">
-        <span className="name">{item.name}</span>
+        <span className="name">{product.name}</span>
         <span className="price">
-          <Money value={item.price}/>
+          <Money value={product.price} />
         </span>
       </div>
-      <CustomButton 
+      <CustomButton
         btnStyle="white"
-        onClick={() => dispatch(addItemToCart(item))}
+        onClick={() => dispatch(addItemToCart(product))}
       >
         Add to cart
       </CustomButton>
     </div>
   );
-}
+};
 
 export default CollectionItem;

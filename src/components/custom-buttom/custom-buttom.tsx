@@ -1,16 +1,18 @@
-import { ButtonHTMLAttributes } from 'react';
-import './custom-buttom.scss';
+import { ButtonHTMLAttributes } from "react";
+import "./custom-buttom.scss";
 
 interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  btnStyle?: 'black' | 'blue' | 'white';
+  btnStyle?: "black" | "blue" | "white";
 }
 
-const CustomButton = ({ btnStyle='black', children, ...props }: CustomButtonProps) => {
+const CustomButton = (props: CustomButtonProps): JSX.Element => {
+  const { btnStyle = "black", children, ...otherProps } = props;
+
   return (
-    <button className={`${btnStyle} custom-button`} {...props}>
+    <button className={`${btnStyle} custom-button`} {...otherProps}>
       {children}
     </button>
-  )
-}
+  );
+};
 
 export default CustomButton;

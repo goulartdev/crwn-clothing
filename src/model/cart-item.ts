@@ -1,6 +1,6 @@
-import { ShopDataItem } from "./shop-data-item";
+import { Product } from "./";
 
 export interface CartItem {
-  product: ShopDataItem;
+  product: Product;
   quantity: number;
 }

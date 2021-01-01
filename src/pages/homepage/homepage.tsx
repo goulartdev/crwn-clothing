@@ -1,13 +1,13 @@
-import Directory from '../../components/directory/directory';
+import Directory from "../../components/directory/directory";
 
-import './homepage.scss';
+import "./homepage.scss";
 
-const HomePage = () => {
+const HomePage = (): JSX.Element => {
   return (
     <div id="homepage">
       <Directory />
     </div>
-  )
-}
+  );
+};
 
 export default HomePage;

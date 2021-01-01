@@ -1,21 +1,25 @@
-import { ShopData } from '../../model';
-import CollectionItem from '../collection-item/collection-item';
+import { Collection } from "../../model";
+import CollectionItem from "../collection-item/collection-item";
 
-import './preview-collection.scss';
+import "./preview-collection.scss";
 
-const PreviewCollection = ({ title, items }: ShopData) => {
+interface PreviewCollectionPros {
+  collection: Collection;
+}
+
+const PreviewCollection = (props: PreviewCollectionPros): JSX.Element => {
+  const { title, products } = props.collection;
+
   return (
     <div className="collection-preview">
       <h1>{title.toUpperCase()}</h1>
       <div className="preview">
-        {items
-          .slice(0, 4)
-          .map(item => (
-            <CollectionItem key={item.id} item={item} />
-          ))}
+        {products.slice(0, 4).map((product) => (
+          <CollectionItem key={product.id} product={product} />
+        ))}
       </div>
     </div>
   );
-}
+};
 
 export default PreviewCollection;

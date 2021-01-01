@@ -1,14 +1,17 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
-import { CartItem } from '../../model';
-import { selectCartItems, selectCartTotalPrice } from '../../redux/cart/cart.selectors';
+import { CartItem } from "../../model";
+import {
+  selectCartItems,
+  selectCartTotalPrice,
+} from "../../redux/cart/cart.selectors";
 
-import CheckoutItem from '../../components/checkout-item/checkout-item';
-import Money from '../../components/money/money';
+import CheckoutItem from "../../components/checkout-item/checkout-item";
+import Money from "../../components/money/money";
 
-import './checkout.scss';
+import "./checkout.scss";
 
-const Checkout = () => {
+const Checkout = (): JSX.Element => {
   const cartItems = useSelector(selectCartItems);
   const totalPrice = useSelector(selectCartTotalPrice);
 
@@ -31,16 +34,18 @@ const Checkout = () => {
           <span>Remove</span>
         </div>
       </div>
-      
+
       {cartItems.map((item: CartItem) => (
         <CheckoutItem key={item.product.id} item={item} />
       ))}
 
       <div className="total-price">
-        <span>TOTAL: <Money value={totalPrice}/></span>
+        <span>
+          TOTAL: <Money value={totalPrice} />
+        </span>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Checkout;

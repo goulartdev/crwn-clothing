@@ -66,6 +66,12 @@
     "@types/react-router-dom": "^5.1.6",
     "@types/redux-logger": "^3.0.8",
     "@types/redux-persist": "^4.3.1",
-    "@types/reselect": "^2.2.0"
+    "@types/reselect": "^2.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-react": "^7.22.0",
+    "prettier": "^2.2.1"
   }
 }
