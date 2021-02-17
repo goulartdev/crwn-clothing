@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { Collection } from "../../model";
+import { Collection } from "model";
 import { RootState } from "../root-reducer";
 import { Collections, ShopState } from "./shop.types";
 
@@ -22,3 +22,8 @@ export const selectCollectionById = (id: string) => {
     (collections: Collections): Collection => collections[id]
   );
 };
+
+export const selectIsCollectionFetching = createSelector(
+  [selectShop],
+  (shop: ShopState) => shop.isFetching
+);

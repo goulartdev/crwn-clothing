@@ -3,5 +3,5 @@ export interface Section {
   title: string;
   imageUrl: string;
   linkUrl: string;
-  size: 'small' | 'medium' | 'large';
+  size: "medium" | "large";
 }

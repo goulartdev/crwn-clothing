@@ -1,5 +1,4 @@
-import { Product } from "../../model";
-import { CartItem } from "../../model/cart-item";
+import { Product, CartItem } from "model";
 
 export interface CartState {
   dropdownHidden: boolean;

@@ -1,16 +1,11 @@
-import { AuthUser } from "../../model";
+import { Credentials, User } from "model";
 
 export interface AuthState {
-  currentUser: AuthUser;
-};
+  currentUser: User | null;
+  error: string | null;
+}
 
-export const AuthActionTypes = {
-  SET_CURRENT_USER: 'SET_CURRENT_USER'
-};
-
-interface SetCurrentUserAction {
-  type: typeof AuthActionTypes.SET_CURRENT_USER;
-  payload: AuthUser
-};
-
-export type AuthAction = SetCurrentUserAction;
+export interface NewUser {
+  name: string;
+  credentials: Credentials;
+}

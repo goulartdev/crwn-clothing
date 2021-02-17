@@ -4,4 +4,5 @@ export interface Collection {
   id: string;
   title: string;
   products: Product[];
+  routeName?: string;
 }
