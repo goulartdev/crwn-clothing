@@ -1,8 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { Collection } from "model";
-import CollectionItem from "../CollectionItem";
 
 import * as S from "./styles";
+import ProductsGrid from "../ProductsGrid";
 
 interface PreviewCollectionPros {
   collection: Collection;
@@ -19,11 +19,8 @@ const PreviewCollection = (props: PreviewCollectionPros): JSX.Element => {
           {title.toUpperCase()} ❯❯
         </Link>
       </S.CollectionTitle>
-      <S.PreviewItems>
-        {products.slice(0, 4).map((product) => (
-          <CollectionItem key={product.id} product={product} />
-        ))}
-      </S.PreviewItems>
+
+      <ProductsGrid products={products.slice(0, 4)} />
     </S.CollectionPreview>
   );
 };

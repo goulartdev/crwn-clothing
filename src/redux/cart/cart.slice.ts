@@ -4,7 +4,6 @@ import { CartItem, Product } from "model";
 import { CartState } from "./cart.types";
 
 const initialState: CartState = {
-  dropdownHidden: true,
   items: [],
 };
 
@@ -12,10 +11,6 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    toggleDropdownVisibility: (state) => {
-      state.dropdownHidden = !state.dropdownHidden;
-    },
-
     addItem: ({ items }, { payload: product }: PayloadAction<Product>) => {
       const existingItem = findProduct(items, product);
 
@@ -54,12 +49,6 @@ const findProduct = (items: CartItem[], product: Product) => {
   return items.find((item) => item.product.id === product.id);
 };
 
-export const {
-  toggleDropdownVisibility,
-  addItem,
-  removeItem,
-  clearItem,
-  clearCart,
-} = cartSlice.actions;
+export const { addItem, removeItem, clearItem, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

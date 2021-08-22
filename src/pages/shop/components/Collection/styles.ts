@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { CollectionItem } from "../CollectionItem/styles";
 
 export const CollectionPage = styled.div`
   display: flex;
@@ -13,9 +12,6 @@ export const Title = styled.h2`
 export const Collection = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-
-  ${CollectionItem} {
-    margin-bottom: 30px;
-  }
+  justify-items: center;
+  gap: 30px 10px;
 `;

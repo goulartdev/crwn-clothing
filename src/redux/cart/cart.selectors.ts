@@ -6,11 +6,6 @@ import { CartState } from "./cart.types";
 
 export const selectCart = (state: RootState): CartState => state.cart;
 
-export const selectCartDropdownHidden = createSelector(
-  [selectCart],
-  (cart: CartState): boolean => cart.dropdownHidden
-);
-
 export const selectCartItems = createSelector(
   [selectCart],
   (cart: CartState): CartItem[] => cart.items
